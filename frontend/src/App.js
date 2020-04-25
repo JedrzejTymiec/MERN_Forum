@@ -3,21 +3,25 @@ import AppNavbar from './components/Navbar';
 import PostForm from './components/CreatePost';
 import PostsList from './components/PostsList';
 import EditPost from './components/EditPost';
+import Discussion from './components/Discussion';
+import MainPage from './components/MainPage';
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
+import './style.css';
 
 class App extends React.Component {
   render() {
     return (
       <Router>
-        <div>
-          <header><AppNavbar /></header>
+        <header><AppNavbar /></header>
+        <div className="app-body-container">
           <Switch>
+            <Route exact path="/" component={MainPage} />
             <Route path="/create-article" component={PostForm} />
-            <Route exact path="/" component={PostsList} />
+            <Route path="/posts-list" component={PostsList} />
             <Route path="/edit-post/:id" component={EditPost} />
+            <Route path="/discussion/:id" component={Discussion} />
           </Switch>  
         </div>
       </Router>

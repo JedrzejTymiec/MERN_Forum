@@ -28,7 +28,7 @@ class PostsList extends React.Component {
 
     render() {
         return(
-            <div>
+            <div className="post-list-container">
                 {this.postsList()}
             </div>
         )

@@ -37,6 +37,9 @@ class AppNavbar extends Component {
                                 <NavItem>
                                     <NavLink href="/create-article">Create Article</NavLink>
                                 </NavItem>
+                                <NavItem>
+                                    <NavLink href="/posts-list/">Lista postów</NavLink>
+                                </NavItem>
                             </Nav>
                         </Collapse>
                     </Container>

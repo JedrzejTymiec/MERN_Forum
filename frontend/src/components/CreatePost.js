@@ -14,6 +14,7 @@ class PostForm extends React.Component {
         super(props);
 
         this.state = {
+            author: "",
             title: "",
             content: ""
         }
@@ -28,6 +29,7 @@ class PostForm extends React.Component {
         //e.preventDefault()
 
         const post = {
+            author: this.state.author,
             title: this.state.title,
             content: this.state.content
         }
@@ -38,6 +40,7 @@ class PostForm extends React.Component {
         .then(res => console.log(res.data))
 
         this.setState({
+            author: "",
             title: "",
             content: ""
         })
@@ -47,8 +50,12 @@ class PostForm extends React.Component {
 
     render() {
         return(
-            <div>
+            <div className="form-container">
                 <Form onSubmit={this.onSubmit} className="form">
+                    <FormGroup className="mx-auto">
+                        <Label for="author">Author</Label>
+                        <Input type="text" id="author" name="author" placeholder="Author:" onChange={this.onChange} />
+                    </FormGroup>
                     <FormGroup className="mx-auto">
                         <Label for="title">Title</Label>
                         <Input type="text" id="title" name="title" placeholder="Title:" onChange={this.onChange} />

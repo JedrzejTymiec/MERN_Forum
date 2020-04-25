@@ -5,6 +5,7 @@ const db = require('./db/db').mongoURI;
 
 const posts = require('./routes/api/posts');
 const comments = require('./routes/api/comments');
+const users = require('./routes/api/user');
 
 const app = express();
 
@@ -19,6 +20,7 @@ mongoose.connect(db, {useNewUrlParser: true})
 //Use Routes
 app.use('/posts', posts);
 app.use('/comments', comments);
+app.use('/users', users);
 
 const port = process.env.PORT || 4000;
 

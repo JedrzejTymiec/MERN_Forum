@@ -4,9 +4,13 @@ const Schema = mongoose.Schema;
 //Create Schema
 const PostSchema = new Schema(
   {
+    author: {
+      type: String,
+      required: true
+    },
     title: {
       type: String,
-      required: true,
+      required: true
     },
     content: {
       type: String,

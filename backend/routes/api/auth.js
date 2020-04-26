@@ -1,55 +1,53 @@
 const express = require('express');
 const router = express.Router();
-const { check, validationResult } = require('express-validator');
-const User = require('../../models/User');
-const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
+const auth = require('../../middleware/auth');
+const { check, validationResult } = require('express-validator');
 const config = require('../../config/default');
+const jwt = require('jsonwebtoken');
 
-// @route   POST api/users
-// @desc    Register user
+const User = require('../../models/User');
+
+// @route GET auth/
+// @desc
+// @access Public
+router.get('/', auth, async (req, res) => {
+    try {
+        const user = await User.findById(req.user.id).select('-password');
+        res.json(user);
+    } catch(error) {
+        console.error(error.message);
+        res.status(500).send('Server Error');
+    }
+});
+
+// @route   POST auth/
+// @desc    Authenticate user and get token
 // @access  Public
 
 router.post('/', [
-    check('name', 'Name is required').not().isEmpty(),
     check('email', 'Please include a valid email').isEmail(),
-    check('password', 'Password should be at least 6 characters long').isLength({ min: 6 })
+    check('password', 'Password is required').exists()
 ] , async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
     }
 
-    const { name, email, password} = req.body
+    const { email, password} = req.body
 
     try {
         let user = await User.findOne({ email });
         //Checks if user already exists
-        if(user) {
-            return res.status(400).json( {errors: [{msg: "User already exists" }] });
+        if(!user) {
+            return res.status(400).json( {errors: [{msg: "User or password invalid" }] });
         }
 
-        const avatar = gravatar.url(email, {
-            s: '200',
-            r: 'pg',
-            d: 'mm'
-        })
-        //New user instance
-        user = new User({
-            name,
-            email,
-            avatar,
-            password
-        });
-        //password encrypt
-        const salt = await bcrypt.genSalt(10);
+        const isMatch = await bcrypt.compare(password, user.password);
 
-        user.password = await bcrypt.hash(password, salt);
-
-        await user.save();
-
-        //Return jonwebtoken
+        if (!isMatch) {
+            return res.status(400).json( {errors: [{msg: "User or password invalid" }] });
+        }
 
         const payload = {
             user: {
@@ -70,8 +68,6 @@ router.post('/', [
         console.error(error.message);
         res.status(500).send('Server error');
     }
-
-    
-})
+});
 
 module.exports = router;

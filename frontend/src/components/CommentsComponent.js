@@ -61,12 +61,6 @@ class CommentsComponent extends React.Component {
             margin: "auto"
         }
 
-        const formStyle = {
-            display: "flex",
-            justifyContent: "space-between",
-            width: "100%"
-        }
-
         return(
             <div>
                 <CommentsList postID={this.props.postID} edit={this.editComment} />

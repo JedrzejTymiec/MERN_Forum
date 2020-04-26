@@ -1,11 +1,12 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const db = require('./db/db').mongoURI;
+const db = require('./config/default').mongoURI;
 
 const posts = require('./routes/api/posts');
 const comments = require('./routes/api/comments');
 const users = require('./routes/api/user');
+const auth = require('./routes/api/auth');
 
 const app = express();
 
@@ -13,7 +14,10 @@ const app = express();
 app.use(bodyParser.json());
 
 //mongo connection 
-mongoose.connect(db, {useNewUrlParser: true})
+mongoose.connect(db, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true})
 .then(() => console.log('Connected do database'))
 .catch(error => console.log('Connection to database failed: ' + error));
 
@@ -21,6 +25,7 @@ mongoose.connect(db, {useNewUrlParser: true})
 app.use('/posts', posts);
 app.use('/comments', comments);
 app.use('/users', users);
+app.use('/auth' , auth);
 
 const port = process.env.PORT || 4000;
 

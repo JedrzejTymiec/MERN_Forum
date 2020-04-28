@@ -54,6 +54,24 @@
     margin: auto;
 }
 
+.post-list-single-post {
+    display: flex;
+
+    .card-img {
+        max-width: 30%;
+        height: auto;
+    }
+}
+
+.discussion-body {
+    .discussion-image {
+        max-width: 80%;
+        height: auto;
+        margin: auto;
+        object-fit: cover;
+    }
+}
+
 .card-body {
 
     .card-title {
@@ -80,3 +98,4 @@
         color: rgba(255,255,255,.75); 
     }
 }
+

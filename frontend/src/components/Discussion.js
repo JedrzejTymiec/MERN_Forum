@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardBody, CardTitle, CardText, Button } from 'reactstrap';
+import { Card, CardBody, CardTitle, CardText, Button, CardImg } from 'reactstrap';
 import axios from 'axios';
 import CommentsComponent from './CommentsComponent';
 
@@ -23,7 +23,8 @@ class PostDiscussion extends React.Component {
                 author: res.data.author,
                 title: res.data.title,
                 content: res.data.content,
-                date: res.data.date
+                date: res.data.date,
+                postImage: res.data.postImage
             })
         })
     }
@@ -42,7 +43,8 @@ class PostDiscussion extends React.Component {
             <div>
                 <div className="discussion-container p-3">
                     <Card className="mx-auto">
-                        <CardBody>
+                        <CardBody className="discussion-body">
+                            <div className="discussion-image"><CardImg height={200} width={200} src={this.state.postImage} /></div>
                             <CardTitle><h5>{this.state.title}</h5></CardTitle>
                             <CardText>
                                 <p>{this.state.content}</p>

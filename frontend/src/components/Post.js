@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardBody, CardTitle, CardText } from 'reactstrap';
+import { Card, CardBody, CardTitle, CardText, CardImg } from 'reactstrap';
 import axios from 'axios';
 
 class Post extends React.Component {
@@ -19,6 +19,7 @@ class Post extends React.Component {
                 <div className="p-1">
                     <Card className="mx-auto">
                         <CardBody>
+                            <CardImg height={200} width={200} src={this.props.obj.postImage} />
                             <CardTitle><a href={"/discussion/" + this.props.obj._id }><h5>{this.props.obj.title}</h5></a></CardTitle>
                             <CardText>{this.props.obj.content}</CardText>
                             <footer className="post-footer">

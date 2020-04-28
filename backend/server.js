@@ -41,6 +41,7 @@ app.use('/posts', posts);
 app.use('/comments', comments);
 app.use('/users', users);
 app.use('/auth' , auth);
+app.use('/posts-list/uploads', express.static('uploads'));
 
 const port = process.env.PORT || 4000;
 

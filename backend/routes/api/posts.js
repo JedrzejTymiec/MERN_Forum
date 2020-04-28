@@ -1,5 +1,32 @@
 const express = require('express');
 const router = express.Router();
+const multer = require('multer');
+
+
+//file upload
+const storage = multer.diskStorage({
+    destination: function(req, file, cb){
+        cb(null, './uploads/');
+    },
+    filename: function(req, file, cb){
+        cb(null, Date.now() + file.originalname);    }
+}); 
+
+const fileFilter = (req, file, cb) => {
+    if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png'){
+        cb(null, true);
+    } else {
+        cb(null, false);
+        console.log('Not valid format')
+    }
+};
+
+const upload = multer({storage: storage, 
+    limits:{
+        fileSize: 1024 * 1024 * 50
+    },
+        fileFilter : fileFilter
+    });
 
 //Post model
 const Post = require('../../models/post');
@@ -19,11 +46,12 @@ router.get('/', (req, res) => {
 // @desc Create a post
 //@access public
 
-router.post('/', (req, res) => {
+router.post('/', upload.single('postImage'), (req, res) => {
     const newPost = new Post({
         author: req.body.author,
         title: req.body.title,
-        content: req.body.content
+        content: req.body.content,
+        postImage: req.file.path
     });
     newPost.save()
     .then(post => res.json(post));

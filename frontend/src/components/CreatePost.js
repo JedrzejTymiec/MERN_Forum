@@ -45,7 +45,7 @@ class PostForm extends React.Component {
             content: ""
         })
 
-        this.props.history.push('/')
+        this.props.history.push('/posts-list')
     }
 
     render() {

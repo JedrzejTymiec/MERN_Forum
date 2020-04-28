@@ -13,17 +13,15 @@ class CommentsComponent extends React.Component {
 
         this.state = {
             comment: "",
-            author: "",
-            postID: this.props.postID
+            author: ""
         }
     }
 
     onSubmit = (e) => {
-
         const comment = {
             comment: this.state.comment,
             author: this.state.author,
-            postID: this.state.postID
+            postID: this.props.postID
         }
 
         console.log(comment)

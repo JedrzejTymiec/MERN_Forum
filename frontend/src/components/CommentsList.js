@@ -12,7 +12,7 @@ class CommentsList extends React.Component {
     }
 
     componentDidMount() {
-        axios.get('/comments/')
+        axios.get('/comments')
         .then(res => {
             this.setState({
                 comments: res.data

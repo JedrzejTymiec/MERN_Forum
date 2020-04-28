@@ -55,7 +55,7 @@ class EditPost extends React.Component {
         .then(res => console.log(res.data))
         .catch(error => console.log(error))
 
-        this.props.history.push('/')
+        this.props.history.push('/discussion/'+ this.props.match.params.id)
     }
 
     render() {

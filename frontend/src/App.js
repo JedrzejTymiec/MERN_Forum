@@ -5,6 +5,8 @@ import PostsList from './components/PostsList';
 import EditPost from './components/EditPost';
 import Discussion from './components/Discussion';
 import MainPage from './components/MainPage';
+import About from './components/subpages/About'
+import Contact from './components/subpages/Contact'
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -18,6 +20,8 @@ class App extends React.Component {
         <div className="app-body-container">
           <Switch>
             <Route exact path="/" component={MainPage} />
+            <Route path="/about" component={About} />
+            <Route path="/Contact" component={Contact} />
             <Route path="/create-article" component={PostForm} />
             <Route path="/posts-list" component={PostsList} />
             <Route path="/edit-post/:id" component={EditPost} />

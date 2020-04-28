@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const db = require('./config/default').mongoURI;
+const cookieParser = require('cookie-parser');
 
 const posts = require('./routes/api/posts');
 const comments = require('./routes/api/comments');
@@ -20,6 +21,20 @@ mongoose.connect(db, {
     useUnifiedTopology: true})
 .then(() => console.log('Connected do database'))
 .catch(error => console.log('Connection to database failed: ' + error));
+
+// cookies
+app.use(cookieParser());
+app.get('/', function(req, res) {
+    
+    if(req.cookies.count){
+        var count = parseInt(req.cookies.count);
+    } else {
+        count = 0;
+    }
+    count = count+1;
+    res.cookie('count', count);
+    res.send('visits :'+ ' ' + count);
+});
 
 //Use Routes
 app.use('/posts', posts);

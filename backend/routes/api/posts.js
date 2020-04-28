@@ -21,6 +21,7 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
     const newPost = new Post({
+        author: req.body.author,
         title: req.body.title,
         content: req.body.content
     });

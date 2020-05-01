@@ -7,7 +7,8 @@ import {
     Nav,
     NavLink,
     NavItem,
-    Container
+    Container,
+    Button
 } from 'reactstrap';
 
 class AppNavbar extends Component {
@@ -48,6 +49,7 @@ class AppNavbar extends Component {
                                 </NavItem>
                             </Nav>
                         </Collapse>
+                            <Button href="/register/">Sign up</Button>
                     </Container>
                 </Navbar>
             </div>

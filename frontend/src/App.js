@@ -4,10 +4,11 @@ import PostForm from './components/CreatePost';
 import PostsList from './components/PostsList';
 import EditPost from './components/EditPost';
 import Discussion from './components/Discussion';
-import MainPage from './components/MainPage';
+import MainPage from './components/subpages/MainPage';
 import About from './components/subpages/About'
 import Contact from './components/subpages/Contact'
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import UserRegisterForm from './components/UserRegisterForm';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
@@ -26,6 +27,7 @@ class App extends React.Component {
             <Route path="/posts-list" component={PostsList} />
             <Route path="/edit-post/:id" component={EditPost} />
             <Route path="/discussion/:id" component={Discussion} />
+            <Route path="/register/" component={UserRegisterForm} />
           </Switch>  
         </div>
       </Router>

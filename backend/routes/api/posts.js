@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
+const { check, body, validationResult } = require('express-validator');
 
 
 //file upload
@@ -46,12 +47,39 @@ router.get('/', (req, res) => {
 // @desc Create a post
 //@access public
 
-router.post('/', upload.single('postImage'), (req, res) => {
+router.post('/img', upload.single('postImage'), [
+    body('author', 'Author is required').not().isEmpty(),
+    body('title', 'Title is required').not().isEmpty(),
+    body('content', 'Content is required').not().isEmpty()
+], (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+
     const newPost = new Post({
         author: req.body.author,
         title: req.body.title,
         content: req.body.content,
         postImage: req.file.path
+    });
+    newPost.save()
+    .then(post => res.json(post));
+});
+
+router.post('/', [
+    check('author', 'Author is required').not().isEmpty(),
+    check('title', 'Title is required').not().isEmpty(),
+    check('content', 'Content is required').not().isEmpty()
+], (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+    const newPost = new Post({
+        author: req.body.author,
+        title: req.body.title,
+        content: req.body.content
     });
     newPost.save()
     .then(post => res.json(post));
@@ -71,7 +99,15 @@ router.delete('/:id', (req, res) => {
 // @desc Update a post
 //@access public
 
-router.put('/:id', (req, res) => {
+router.put('/:id', [
+    check('author', 'Author is required').not().isEmpty(),
+    check('title', 'Title is required').not().isEmpty(),
+    check('content', 'Content is required').not().isEmpty()
+], (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
     Post.findById(req.params.id)
     .then(item => item.update({$set: req.body})
     .then(() => res.json({status: 'Post updated'})))
@@ -86,7 +122,10 @@ router.get('/:id', (req, res) => {
     Post.findById(req.params.id)
     .then(item => res.json(item))
     .then(() => res.json({status: 'Found'}))
-    .catch(error => res.status(404).json({status: `Can't find, error: ${error}`}));
+    .catch(error => {
+        res.status(404);
+        //console.log(error);
+    });
 });
 
 

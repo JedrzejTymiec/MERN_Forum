@@ -9,6 +9,7 @@
 }
 
 .post-footer {
+  padding-left: 20px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -84,6 +85,10 @@
      object-fit: cover;
 }
 
+.card-body .card-title {
+  margin-top: 10px;
+}
+
 .card-body .card-title a {
   text-decoration: none;
 }
@@ -108,4 +113,49 @@
 
 .nav-link:hover {
   color: rgba(255, 255, 255, 0.75);
+}
+
+.validation-error {
+  color: #ff0000;
+  font-weight: 800;
+}
+
+.content-box {
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.contact-data {
+  padding-right: 30px;
+}
+
+.image-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.image-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  width: 100%;
+}
+
+.image-box img {
+  display: block;
+  width: 90%;
+}
+
+.made {
+  padding-top: 30px;
+  text-align: center;
 }

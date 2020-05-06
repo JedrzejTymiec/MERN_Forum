@@ -68,7 +68,7 @@ class PostsList extends React.Component {
 
     render() {
         return(
-            <div className="post-list-container">
+            <div className="subpage-container">
                 {this.postsList()}
             </div>
         )

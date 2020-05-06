@@ -8,6 +8,7 @@ import {
     Button
 } from 'reactstrap';
 import axios from 'axios';
+// import CreatePostForm from './CreatePostForm';
 
 class PostForm extends React.Component {
     constructor(props) {
@@ -104,8 +105,10 @@ class PostForm extends React.Component {
 
     render() {
         return(
-            <div className="form-container">
-                <Form onSubmit={this.onSubmit} className="form">
+            <div className="subpage-container">
+                {/* <CreatePostForm onSubmit={this.onSubmit} onChange={this.onChange} selectedImage = {this.selectedImage} titleError={this.state.titleError} contentError={this.props.contentError} /> */}
+                <h3>Create new article!</h3><br/>
+                <Form onSubmit={this.onSubmit} >
                     <FormGroup className="mx-auto">
                         <Label for="author">Author</Label>
                         <Input type="text" id="author" name="author" placeholder="Anonymous" onChange={this.onChange} />

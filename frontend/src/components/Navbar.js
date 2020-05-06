@@ -1,14 +1,13 @@
 import React, {Component} from 'react';
 import {
-    Collapse,
     Navbar,
-    NavbarToggler,
-    NavbarBrand,
-    Nav,
-    NavLink,
-    NavItem,
     Container,
-    Button
+    Button,
+    NavbarBrand,
+    InputGroup,
+    InputGroupAddon,
+    InputGroupText,
+    Input
 } from 'reactstrap';
 
 class AppNavbar extends Component {
@@ -29,28 +28,18 @@ class AppNavbar extends Component {
     render() {
         return(
             <div>
-                <Navbar color="dark" dark expand="sm" className="mb-5">
-                    <Container>
+                <Navbar color="dark" dark>
                         <NavbarBrand href="/">Forum</NavbarBrand>
-                        <NavbarToggler onClick={this.toggle} />
-                        <Collapse isOpen={this.state.isOpen} navbar>
-                            <Nav className="ml-auto" navbar>
-                                <NavItem>
-                                    <NavLink href="/create-article">Create Article</NavLink>
-                                </NavItem>
-                                <NavItem>
-                                    <NavLink href="/posts-list/">Posts List</NavLink>
-                                </NavItem>
-                                <NavItem>
-                                    <NavLink href="/contact/">Contact</NavLink>
-                                </NavItem>
-                                <NavItem>
-                                    <NavLink href="/about/">About</NavLink>
-                                </NavItem>
-                            </Nav>
-                        </Collapse>
-                            <Button href="/register/">Sign up</Button>
-                    </Container>
+                        <InputGroup>
+                            <InputGroupAddon addonType="prepend">
+                                <InputGroupText><i class="fas fa-search"></i></InputGroupText>
+                            </InputGroupAddon>
+                            <Input placeholder="Search" />
+                        </InputGroup>
+                            <div>
+                                <Button href="/log-in/" className="mr-2">Log in</Button>
+                                <Button href="/register/">Sign up</Button>
+                            </div>
                 </Navbar>
             </div>
         )

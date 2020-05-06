@@ -1,25 +1,11 @@
 
-.form-container {
-    border-bottom: 1px solid black;
-    padding-bottom: 10px;
-    
-    .form {
-        max-width: 70vw;
-        margin: auto;
-    }
-}
-
 .post-footer {
-    padding-left: 20px;
+    font-size: small;
+    font-style: italic;
+    color: #b5b5b5;
+    margin: 15px 0 0 0; 
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
-
-    p {
-        font-size: small;
-        font-style: italic;
-        color: #b5b5b5;
-    }
 }
 
 .comment {
@@ -84,10 +70,6 @@
     }
 }
 
-.post-list-container {
-    padding-bottom: 50px;
-}
-
 .add-comment {
     display: flex;
     justify-content: space-between;
@@ -95,10 +77,10 @@
 }
 
 .nav-link {
-    color: rgba(255,255,255,.5);
+    color: rgb(114, 114, 114);
 
     &:hover {
-        color: rgba(255,255,255,.75); 
+        color: rgba(0, 0, 0, 0.75); 
     }
 }
 
@@ -136,7 +118,45 @@
     width: 90%;
 }
 
-.made {
+.about {
     padding-top: 30px;
     text-align: center;
+}
+
+.post-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sidebar-nav {
+    max-width: 25%;
+    border-right: 1px solid rgb(170, 170, 170);
+    padding-top: 3rem;
+    color: rgb(130, 130, 130);
+    transition: 150ms;
+}
+
+.app-body {
+    display: flex;
+}
+
+.subpage-container {
+    margin: auto;
+    width: 75%;
+    padding-top: 3rem;
+    min-height: 90vh;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.input-group {
+    width: 60%;
+}
+
+.post-buttons {
+    margin-bottom: 15px;
 }

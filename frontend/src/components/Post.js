@@ -34,14 +34,14 @@ class Post extends React.Component {
                     <Card className="mx-auto">
                         <CardBody className="post-list-single-post">
                             {this.state.img}
-                            <div className="ml-3">
-                                <CardTitle><a href={"/discussion/" + this.props.obj._id }><h5>{this.props.obj.title}</h5></a></CardTitle>
-                                <CardText>{this.props.obj.content}</CardText>
+                            <div className="ml-3 post-body">
+                                <div>
+                                    <CardTitle><a href={"/discussion/" + this.props.obj._id }><h5>{this.props.obj.title}</h5></a></CardTitle>
+                                    <CardText>{this.props.obj.content}</CardText>
+                                </div>
+                                <p className="post-footer">Opublikowano: {this.props.obj.date} by {this.props.obj.author}</p>
                             </div>
                         </CardBody>
-                        <footer className="post-footer">
-                                <p>Opublikowano: {this.props.obj.date} by {this.props.obj.author}</p>
-                        </footer>
                     </Card>
                 </div>
             </div>

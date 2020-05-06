@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
+import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 
 class UserRegisterForm extends React.Component {
     constructor(props) {
@@ -11,21 +11,21 @@ class UserRegisterForm extends React.Component {
 
     render() {
         return(
-            <div>
-                <Form>
+            <div className="subpage-container">
+                <Form >
                     <FormGroup>
-                        <Label></Label>
-                        <Input />
+                        <Label for="name">Name</Label>
+                        <Input type="text" id="name" name="name" placeholder="Name:" />
                     </FormGroup>
                     <FormGroup>
-                        <Label></Label>
-                        <Input />
+                        <Label for="email">E-mail</Label>
+                        <Input type="email" id="email" name="email" placeholder="E-mail:" />
                     </FormGroup>
                     <FormGroup>
-                        <Label></Label>
-                        <Input />
+                        <Label for="password">Password</Label>
+                        <Input type="password" id="password" name="password" placeholder="Password:" />
                     </FormGroup>
-                    <Button></Button>
+                    <Button type="submit">Submit</Button>
                 </Form>
             </div>
         )

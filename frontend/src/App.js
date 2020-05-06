@@ -9,6 +9,7 @@ import About from './components/subpages/About'
 import Contact from './components/subpages/Contact'
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import UserRegisterForm from './components/UserRegisterForm';
+import SidebarNav from './components/SidebarNav';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
@@ -18,7 +19,8 @@ class App extends React.Component {
     return (
       <Router>
         <header><AppNavbar /></header>
-        <div className="app-body-container">
+        <div className="app-body">
+        <SidebarNav />
           <Switch>
             <Route exact path="/" component={MainPage} />
             <Route path="/about" component={About} />

@@ -11,6 +11,15 @@ const config = require('../../config/default');
 // @desc    Register user
 // @access  Public
 
+router.get('/', (req, res) => {
+    User.find()
+    .then(users => res.json(users))
+});
+
+// @route   POST api/users
+// @desc    Register user
+// @access  Public
+
 router.post('/', [
     check('name', 'Name is required').not().isEmpty(),
     check('email', 'Please include a valid email').isEmail(),

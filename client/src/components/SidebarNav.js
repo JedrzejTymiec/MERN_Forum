@@ -21,6 +21,9 @@ class SidebarNav extends React.Component {
             <NavLink href="/posts-list/">Posts List</NavLink>
           </NavItem>
           <NavItem>
+            <NavLink href="/users-list/">Registred Users</NavLink>
+          </NavItem>
+          <NavItem>
             <NavLink href="/contact/">Contact</NavLink>
           </NavItem>
           <NavItem>

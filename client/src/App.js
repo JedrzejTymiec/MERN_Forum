@@ -10,6 +10,7 @@ import Contact from './components/subpages/Contact'
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import UserRegisterForm from './components/UserRegisterForm';
 import SidebarNav from './components/SidebarNav';
+import UserList from './components/UserList';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
@@ -30,6 +31,7 @@ class App extends React.Component {
             <Route path="/edit-post/:id" component={EditPost} />
             <Route path="/discussion/:id" component={Discussion} />
             <Route path="/register/" component={UserRegisterForm} />
+            <Route path="/users-list/" component={UserList} />
           </Switch>  
         </div>
       </Router>

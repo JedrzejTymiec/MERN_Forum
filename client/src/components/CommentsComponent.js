@@ -77,6 +77,7 @@ class CommentsComponent extends React.Component {
             this.props.history.push('/discussion/' + this.props.postID)
         } else {
             const editComment = {
+                postID: this.props.postID,
                 comment: this.state.comment,
                 author: this.state.author
             }

@@ -8,6 +8,7 @@ const posts = require('./routes/api/posts');
 const comments = require('./routes/api/comments');
 const users = require('./routes/api/user');
 const auth = require('./routes/api/auth');
+const profile = require('./routes/api/profile');
 
 const app = express();
 
@@ -41,6 +42,7 @@ app.use('/posts', posts);
 app.use('/comments', comments);
 app.use('/users', users);
 app.use('/auth' , auth);
+app.use('/profile' , profile);
 app.use('/uploads', express.static('uploads'));
 app.use('/posts-list/uploads', express.static('uploads'));
 app.use('/discussion/uploads', express.static('uploads'));

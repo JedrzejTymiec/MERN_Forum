@@ -1,19 +1,18 @@
 import React from 'react';
-import AppNavbar from './components/Navbar';
-import PostForm from './components/CreatePost';
-import PostsList from './components/PostsList';
-import EditPost from './components/EditPost';
-import Discussion from './components/Discussion';
-import MainPage from './components/subpages/MainPage';
-import About from './components/subpages/About'
-import Contact from './components/subpages/Contact'
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
-import UserRegisterForm from './components/UserRegisterForm';
-import SidebarNav from './components/SidebarNav';
-import UserList from './components/UserList';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './style.css';
+import AppNavbar from './nav/Navbar';
+import PostForm from './posts/CreatePost';
+import PostsList from './posts/PostsList';
+import EditPost from './posts/EditPost';
+import Discussion from './posts/Discussion';
+import MainPage from './subpages/MainPage';
+import About from './subpages/About'
+import Contact from './subpages/Contact'
+import UserRegisterForm from './userLoginAndRegistration/UserRegisterForm';
+import SidebarNav from './nav/SidebarNav';
+import UserList from './userLoginAndRegistration/UserList';
+import Login from './userLoginAndRegistration/Login';
 
 class App extends React.Component {
   render() {
@@ -32,6 +31,7 @@ class App extends React.Component {
             <Route path="/discussion/:id" component={Discussion} />
             <Route path="/register/" component={UserRegisterForm} />
             <Route path="/users-list/" component={UserList} />
+            <Route path="/log-in/" component={Login} />
           </Switch>  
         </div>
       </Router>

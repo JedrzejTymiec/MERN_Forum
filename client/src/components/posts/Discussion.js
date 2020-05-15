@@ -8,7 +8,7 @@ import {
   CardImg,
 } from "reactstrap";
 import axios from "axios";
-import CommentsComponent from "./CommentsComponent";
+import CommentsComponent from "./../comments/CommentsComponent";
 
 class PostDiscussion extends React.Component {
   constructor(props) {

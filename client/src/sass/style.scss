@@ -144,7 +144,7 @@
 .subpage-container {
     margin: auto;
     width: 75%;
-    padding-top: 3rem;
+    padding-top: 1.5rem;
     min-height: 90vh;
 }
 
@@ -159,4 +159,23 @@
 
 .post-buttons {
     margin-bottom: 15px;
+}
+
+.post-list-header {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+
+    .btn {
+        font-size: 1.1rem;
+        background-color: rgb(0, 123, 255);
+        a {
+            text-decoration: none;
+            color: #FFF;
+        }
+
+        &:hover {
+            background-color: rgb(0, 100, 207);
+        }
+    }
 }

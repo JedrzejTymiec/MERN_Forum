@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {
     Navbar,
-    Container,
     Button,
     NavbarBrand,
     InputGroup,

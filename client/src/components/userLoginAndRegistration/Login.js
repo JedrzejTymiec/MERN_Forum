@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import axios from 'axios';
+import { withRouter } from 'react-router-dom';
 
 class UserRegisterForm extends React.Component {
     constructor(props) {
@@ -18,12 +19,23 @@ class UserRegisterForm extends React.Component {
     }
 
     onSubmit = (e) => {
-
+        e.preventDefault();
+        const logData = {
+            email: this.state.email,
+            password: this.state.password
         }
+        axios.post('/auth', logData)
+        .then(res => {
+            localStorage.setItem('jwt-token', res.data.token);
+            this.props.logInOut();
+            this.props.history.push('/');
+        })
+    }
 
     render() {
         return(
             <div className="subpage-container">
+                <h1>You need to be logged in!</h1>
                 <Form onSubmit={this.onSubmit}>
                     <FormGroup>
                         <Label for="email">E-mail</Label>
@@ -40,4 +52,4 @@ class UserRegisterForm extends React.Component {
     }
 }
 
-export default UserRegisterForm;
+export default withRouter(UserRegisterForm);

@@ -1,13 +1,15 @@
 import React, {Component} from 'react';
 import {
     Navbar,
-    Button,
     NavbarBrand,
     InputGroup,
     InputGroupAddon,
     InputGroupText,
     Input
 } from 'reactstrap';
+import NavLogin from './NavLogin';
+import { getJwt } from './../../helpers/jwt';
+import axios from 'axios';
 
 class AppNavbar extends Component {
     constructor(props) {
@@ -15,7 +17,21 @@ class AppNavbar extends Component {
 
         this.state = {
             isOpen: false,
+            user: undefined
         }
+    }
+
+    componentDidMount() {
+        const jwt= getJwt();
+            axios.get('/auth', {headers: {"x-auth-token": jwt}})
+            .then(res => {
+                this.setState({
+                    user: res.data
+                })
+            })
+            .catch(error => {
+            console.log(error);
+        })
     }
 
     toggle = () => {
@@ -28,17 +44,14 @@ class AppNavbar extends Component {
         return(
             <div>
                 <Navbar color="dark" dark>
-                        <NavbarBrand href="/">Forum</NavbarBrand>
-                        <InputGroup>
-                            <InputGroupAddon addonType="prepend">
-                                <InputGroupText><i class="fas fa-search"></i></InputGroupText>
-                            </InputGroupAddon>
-                            <Input placeholder="Search" />
-                        </InputGroup>
-                            <div>
-                                <Button href="/log-in/" className="mr-2">Log in</Button>
-                                <Button href="/register/">Sign up</Button>
-                            </div>
+                    <NavbarBrand href="/">Forum</NavbarBrand>
+                    <InputGroup>
+                        <InputGroupAddon addonType="prepend">
+                            <InputGroupText><i className="fas fa-search"></i></InputGroupText>
+                        </InputGroupAddon>
+                        <Input placeholder="Search" />
+                    </InputGroup>
+                    <NavLogin isLogged={this.props.isLogged} logInOut={this.props.logInOut} user={this.state.user}/>
                 </Navbar>
             </div>
         )

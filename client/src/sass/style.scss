@@ -179,3 +179,36 @@
         }
     }
 }
+
+.navbar {
+    box-sizing: content-box;
+    max-height: 55px;
+    padding: 0;
+
+    .navbar-brand {
+        padding: 8px;
+    }
+    .input-group{
+        padding: 8px;
+    }
+    .nav-user {
+        padding-right: 8px;
+
+        a {
+            text-decoration: none;
+            color: #FFF;
+            transition: 150ms;
+            display: flex;
+    
+            &:hover {
+                color: rgb(212, 212, 212);
+            }
+        }
+    
+        .avatar {
+            max-width: 45px;
+            height: auto;
+            border-radius: 60px;
+        }
+    }
+}

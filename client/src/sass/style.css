@@ -171,4 +171,39 @@
 .post-list-header .btn:hover {
   background-color: #0064cf;
 }
+
+.navbar {
+  box-sizing: content-box;
+  max-height: 55px;
+  padding: 0;
+}
+
+.navbar .navbar-brand {
+  padding: 8px;
+}
+
+.navbar .input-group {
+  padding: 8px;
+}
+
+.navbar .nav-user {
+  padding-right: 8px;
+}
+
+.navbar .nav-user a {
+  text-decoration: none;
+  color: #FFF;
+  transition: 150ms;
+  display: flex;
+}
+
+.navbar .nav-user a:hover {
+  color: #d4d4d4;
+}
+
+.navbar .nav-user .avatar {
+  max-width: 45px;
+  height: auto;
+  border-radius: 60px;
+}
 /*# sourceMappingURL=style.css.map */

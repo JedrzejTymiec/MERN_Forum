@@ -1,61 +1,52 @@
-import React, {Component} from 'react';
+import React, { Component } from "react";
 import {
-    Navbar,
-    NavbarBrand,
-    InputGroup,
-    InputGroupAddon,
-    InputGroupText,
-    Input
-} from 'reactstrap';
-import NavLogin from './NavLogin';
-import { getJwt } from './../../helpers/jwt';
-import axios from 'axios';
+  Navbar,
+  NavbarBrand,
+  InputGroup,
+  InputGroupAddon,
+  InputGroupText,
+  Input,
+} from "reactstrap";
+import Buttons from "./Buttons";
+import Avatar from "./Avatar";
 
 class AppNavbar extends Component {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.state = {
-            isOpen: false,
-            user: undefined
-        }
-    }
+    this.state = {
+      isOpen: false,
+    };
+  }
 
-    componentDidMount() {
-        const jwt= getJwt();
-            axios.get('/auth', {headers: {"x-auth-token": jwt}})
-            .then(res => {
-                this.setState({
-                    user: res.data
-                })
-            })
-            .catch(error => {
-            console.log(error);
-        })
-    }
+  toggle = () => {
+    this.setState({
+      isOpen: !this.state.isOpen,
+    });
+  };
 
-    toggle = () => {
-        this.setState({
-            isOpen: !this.state.isOpen
-        });
-    }
-
-    render() {
-        return(
-            <div>
-                <Navbar color="dark" dark>
-                    <NavbarBrand href="/">Forum</NavbarBrand>
-                    <InputGroup>
-                        <InputGroupAddon addonType="prepend">
-                            <InputGroupText><i className="fas fa-search"></i></InputGroupText>
-                        </InputGroupAddon>
-                        <Input placeholder="Search" />
-                    </InputGroup>
-                    <NavLogin isLogged={this.props.isLogged} logInOut={this.props.logInOut} user={this.state.user}/>
-                </Navbar>
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div>
+        <Navbar color="dark" dark>
+          <NavbarBrand href="/">Forum</NavbarBrand>
+          <InputGroup>
+            <InputGroupAddon addonType="prepend">
+              <InputGroupText>
+                <i className="fas fa-search"></i>
+              </InputGroupText>
+            </InputGroupAddon>
+            <Input placeholder="Search" />
+          </InputGroup>
+          {this.props.isLogged ? (
+            <Avatar user={this.props.user} logInOut={this.props.logInOut} />
+          ) : (
+            <Buttons />
+          )}
+        </Navbar>
+      </div>
+    );
+  }
 }
 
 export default AppNavbar;

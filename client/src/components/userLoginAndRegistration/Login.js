@@ -30,7 +30,6 @@ class UserRegisterForm extends React.Component {
     };
     axios.post("/auth", logData).then((res) => {
       localStorage.setItem("jwt-token", res.data.token);
-      this.props.logInOut();
       this.props.loggedUser();
       this.props.history.push("/create-article");
     });

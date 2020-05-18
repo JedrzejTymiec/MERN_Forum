@@ -9,6 +9,7 @@ import {
 } from "reactstrap";
 import axios from "axios";
 import CommentsComponent from "./../comments/CommentsComponent";
+import { withRouter } from "react-router-dom";
 
 class PostDiscussion extends React.Component {
   constructor(props) {
@@ -72,7 +73,7 @@ class PostDiscussion extends React.Component {
                 </Button>
               </div>
             </footer>
-            <CommentsComponent postID={this.state.id} />
+            <CommentsComponent postID={this.state.id} user={this.props.user} />
           </CardBody>
         </Card>
       </div>
@@ -80,4 +81,4 @@ class PostDiscussion extends React.Component {
   }
 }
 
-export default PostDiscussion;
+export default withRouter(PostDiscussion);

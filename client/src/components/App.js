@@ -22,16 +22,9 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLogged: false,
       user: undefined,
     };
   }
-
-  logInOut = () => {
-    this.setState({
-      isLogged: !this.state.isLogged,
-    });
-  };
 
   loggedUser = () => {
     const jwt = getJwt();
@@ -52,14 +45,14 @@ class App extends React.Component {
       });
   };
 
+  componentDidMount() {
+    this.loggedUser();
+  }
+
   render() {
     return (
       <Router>
-        <AppNavbar
-          isLogged={this.state.isLogged}
-          logInOut={this.logInOut}
-          user={this.state.user}
-        />
+        <AppNavbar user={this.state.user} />
         <div className="app-body">
           <SidebarNav />
           <Switch>
@@ -69,15 +62,19 @@ class App extends React.Component {
             <Route path="/posts-list" component={PostsList} />
             <Route
               path="/log-in/"
-              render={() => (
-                <Login logInOut={this.logInOut} loggedUser={this.loggedUser} />
-              )}
+              render={() => <Login loggedUser={this.loggedUser} />}
             />
             <Route path="/register/" component={UserRegisterForm} />
             <Authentication user={this.state.user}>
-              <Route path="/create-article" component={PostForm} />
+              <Route
+                path="/create-article"
+                render={() => <PostForm user={this.state.user} />}
+              />
               <Route path="/edit-post/:id" component={EditPost} />
-              <Route path="/discussion/:id" component={Discussion} />
+              <Route
+                path="/discussion/:id"
+                render={() => <Discussion user={this.state.user} />}
+              />
               <Route path="/profile/:id" component={UserProfile} />
               <Route path="/users-list/" component={UserList} />
             </Authentication>

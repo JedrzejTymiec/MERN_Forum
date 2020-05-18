@@ -1,25 +1,16 @@
-import React from 'react';
-import axios from 'axios';
+import React from "react";
 
 class UserProfile extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: "",
+    };
+  }
 
-        }
-    }
-
-    componentDidMount() {
-        axios.get('/user')
-    }
-
-    render() {
-        return(
-            <div>
-
-            </div>
-        )
-    }
+  render() {
+    return <div></div>;
+  }
 }
 
 export default UserProfile;

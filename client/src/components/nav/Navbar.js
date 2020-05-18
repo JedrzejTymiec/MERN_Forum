@@ -38,11 +38,7 @@ class AppNavbar extends Component {
             </InputGroupAddon>
             <Input placeholder="Search" />
           </InputGroup>
-          {this.props.isLogged ? (
-            <Avatar user={this.props.user} logInOut={this.props.logInOut} />
-          ) : (
-            <Buttons />
-          )}
+          {!this.props.user ? <Buttons /> : <Avatar user={this.props.user} />}
         </Navbar>
       </div>
     );
